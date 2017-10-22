@@ -19,39 +19,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
-                android:text="@string/passenger_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textViewPassengerLabel"
-                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-                android:letterSpacing="0.5"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginLeft="16dp"
-                tools:layout_constraintTop_creator="1"
-                tools:layout_constraintLeft_creator="1" />
-
-
-            <TextView
-                tools:text="@string/passenger_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textViewPassengerName"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                android:textColor="@color/colorPrimary"
-                app:layout_constraintLeft_toRightOf="@+id/textViewPassengerLabel"
-                app:layout_constraintBaseline_toBaselineOf="@+id/textViewPassengerLabel"
-                android:layout_marginLeft="16dp"
-                android:layout_marginStart="16dp" />
 
             <include
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewPassengerName"
                 android:layout_marginTop="32dp"
-                android:id="@+id/flight_info"
+                android:id="@+id/boarding_info"
                 layout="@layout/flight_info"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

@@ -24,7 +24,7 @@
         android:drawableStart="@drawable/ic_inbox"
         android:drawableLeft="@drawable/ic_inbox"
         android:textSize="28sp"
-        android:textColor="@android:color/black"
+        style="@style/inboxStyle"
         android:text="@string/inbox" />
 
     <TextView
@@ -33,7 +33,7 @@
         android:drawableStart="@drawable/ic_star"
         android:drawableLeft="@drawable/ic_star"
         android:textSize="28sp"
-        android:textColor="@android:color/black"
+        style="@style/folderStyle"
         android:text="@string/starred" />
 
     <TextView
@@ -45,7 +45,7 @@
         android:drawableStart="@drawable/ic_drafts"
         android:drawableLeft="@drawable/ic_drafts"
         android:textSize="20sp"
-        android:textColor="@android:color/black"
+        style="@style/folderStyle"
         android:text="@string/drafts" />
 
     <TextView
@@ -56,7 +56,7 @@
         android:drawableStart="@drawable/ic_sent"
         android:drawableLeft="@drawable/ic_sent"
         android:textSize="28sp"
-        android:textColor="@android:color/black"
+        style="@style/folderStyle"
         android:text="@string/sent" />
 
     <TextView
@@ -68,7 +68,7 @@
         android:drawableStart="@drawable/ic_trash"
         android:drawableLeft="@drawable/ic_trash"
         android:textSize="28sp"
-        android:textColor="@android:color/black"
+        style="@style/folderStyle"
         android:text="@string/trash" />
 
 </LinearLayout>

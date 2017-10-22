@@ -15,15 +15,25 @@
  */
 package com.example.android.datafrominternet;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import com.example.android.datafrominternet.utilities.NetworkUtils;
+
+import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
 
     // TODO (26) Create an EditText variable called mSearchBoxEditText
-
     // TODO (27) Create a TextView variable called mUrlDisplayTextView
     // TODO (28) Create a TextView variable called mSearchResultsTextView
+
+    EditText mSearchBoxEditText;
+    TextView mUrlDisplayTextView;
+    TextView mSearchResultsTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,5 +44,41 @@ public class MainActivity extends AppCompatActivity {
 
         // TODO (30) Use findViewById to get a reference to mUrlDisplayTextView
         // TODO (31) Use findViewById to get a reference to mSearchResultsTextView
+
+        mSearchBoxEditText = (EditText)findViewById(R.id.et_search_box);
+        mUrlDisplayTextView = (TextView)findViewById(R.id.tv_url_display);
+        mSearchResultsTextView = (TextView)findViewById(R.id.tv_github_search_results_json);
+    }
+
+    public class GithubQueryTask extends AsyncTask<URL, Void, String>
+    {
+        @Override
+        protected void onPreExecute()
+        {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(String searchResult)
+        {
+
+        }
+
+        @Override
+        protected String doInBackground(URL...params)
+        {
+            URL url = params[0];
+            String result = null;
+
+            try
+            {
+                result = NetworkUtils.getResponseFromHttpUrl(url);
+            }
+            catch (Exception ex)
+            {
+                ex.printStackTrace();
+            }
+            return result;
+        }
     }
 }

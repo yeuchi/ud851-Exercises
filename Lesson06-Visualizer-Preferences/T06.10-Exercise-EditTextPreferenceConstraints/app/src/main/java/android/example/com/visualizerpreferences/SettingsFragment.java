@@ -16,6 +16,7 @@ package android.example.com.visualizerpreferences;
  * limitations under the License.
  */
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;
@@ -29,7 +30,7 @@ import android.widget.Toast;
 
 // TODO (1) Implement OnPreferenceChangeListener
 public class SettingsFragment extends PreferenceFragmentCompat implements
-        OnSharedPreferenceChangeListener {
+        OnSharedPreferenceChangeListener, Preference.OnPreferenceChangeListener {
 
     @Override
     public void onCreatePreferences(Bundle bundle, String s) {
@@ -52,6 +53,8 @@ public class SettingsFragment extends PreferenceFragmentCompat implements
             }
         }
         // TODO (3) Add the OnPreferenceChangeListener specifically to the EditTextPreference
+        Preference preference = findPreference(getString(R.string.pref_size_key));
+        preference.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -92,6 +95,26 @@ public class SettingsFragment extends PreferenceFragmentCompat implements
     // to a float; if it cannot, show a helpful error message and return false. If it can be converted
     // to a float check that that float is between 0 (exclusive) and 3 (inclusive). If it isn't, show
     // an error message and return false. If it is a valid number, return true.
+
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+
+        float f;
+
+        try {
+            f = Float.parseFloat(newValue.toString());
+
+            if(f < 0 || f > 3)
+                throw new Exception("value out of range.");
+        }
+        catch (Exception ex)
+        {
+            Context context = this.getContext();
+            Toast.makeText(context, "Permission for audio not granted. Visualizer can't run.", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        return false;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
